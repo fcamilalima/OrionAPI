@@ -26,137 +26,182 @@
 
     <div id="syncDetails" class="card shadow-sm p-4 mt-4" style="display: none;">
         <form method="post">
-            <div class="row">
-                <div class="col-md-3">
-                    <label class="form-label">Ação</label>
-                    <input asp-for="Acao" class="form-control" readonly />
-                </div>
-
-                <div class="col-md-3">
-                    <label class="form-label">Data da Viagem</label>
-                    <input asp-for="DataViagem" class="form-control" readonly />
-                </div>
-                <div class="col-md-3">
-                    <label class="form-label">Erro</label>
-                    <input asp-for="Erro" class="form-control" readonly />
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-check mt-4">
-                        <input asp-for="ExecutouOK" class="form-check-input" type="checkbox">
-                        <label class="form-check-label">Executou com Sucesso? </label>
+            <fieldset>
+                <legend>Informações da Viagem</legend>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-label">Ação</label>
+                        <input asp-for="Acao" class="form-control" placeholder="(vazio)" readonly />
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <label class="form-label">IMEI</label>
-                    <input asp-for="Imei" class="form-control" readonly />
-                </div>
-
-                <div class="col-md-3">
-                    <label class="form-label">Manifestar</label>
-                    <input asp-for="Manifestar" class="form-control" readonly />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <label class="form-label">Número do Telefone</label>
-                    <input asp-for="NumeroFone" class="form-control" readonly />
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-check mt-4">
-                        <input asp-for="NumeroFoneMudou" class="form-check-input" type="checkbox">
-                        <label class="form-check-label">Telefone Mudou?</label>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-label">Número da Viagem</label>
+                        <input asp-for="NumeroViagem" class="form-control" readonly />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Data da Viagem</label>
+                        <input asp-for="DataViagem" class="form-control" readonly />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Tipo de Viagem</label>
+                        <input asp-for="TipoViagem" class="form-control" readonly />
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <label class="form-label">Número da Viagem</label>
-                    <input asp-for="NumeroViagem" class="form-control" readonly />
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-label">Rota</label>
+                        <input asp-for="Rota" class="form-control" readonly />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Status</label>
+                        <input asp-for="Status" class="form-control" placeholder="(vazio)" readonly />
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-check mt-4">
+                            <input asp-for="Vazia" class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Viagem Vazia?</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-check mt-4">
+                            <input asp-for="Reset" class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Reset?</label>
+                        </div>
+                    </div>
+            </fieldset>
 
-                <div class="col-md-3">
-                    <label class="form-label">Placa Carreta 1</label>
-                    <input asp-for="PlacaCarreta1" class="form-control" readonly />
+            <fieldset>
+                <legend>Telefone</legend>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-check mt-4">
+                            <input asp-for="NumeroFoneMudou" class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Telefone Mudou?</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Número do Telefone</label>
+                        <input asp-for="NumeroFone" class="form-control" placeholder="(vazio)" readonly />
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <label class="form-label">Placa Carreta 2</label>
-                    <input asp-for="PlacaCarreta2" class="form-control" readonly />
-                </div>
+            </fieldset>
 
-                <div class="col-md-3">
-                    <label class="form-label">Placa Cavalo</label>
-                    <input asp-for="PlacaCavalo" class="form-control" readonly />
-                </div>
-            </div>
+            <fieldset>
+                <legend>Placas</legend>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-label">Placa Carreta 1</label>
+                        <input asp-for="PlacaCarreta1" class="form-control" placeholder="(vazio)" readonly />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Placa Carreta 2</label>
+                        <input asp-for="PlacaCarreta2" class="form-control" placeholder="(vazio)" readonly />
+                    </div>
 
-            <div class="row">
-                <div class="col-md-3">
-                    <label class="form-label">Plano</label>
-                    <input asp-for="Plano" class="form-control" readonly />
+                    <div class="col-md-3">
+                        <label class="form-label">Placa Cavalo</label>
+                        <input asp-for="PlacaCavalo" class="form-control" placeholder="(vazio)" readonly />
+                    </div>
                 </div>
-
-                <div class="col-md-3">
-                    <label class="form-label">Ponto Operacional</label>
-                    <input asp-for="PontoOperacional" class="form-control" readonly />
+                <div class="row">
+                    <legend>Placas</legend>
+                    <div class="col-md-3">
+                        <div id="placasLista" class="card shadow-sm p-4 mt-4">
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </fieldset>
 
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-check mt-4">
-                        <input asp-for="Reset" class="form-check-input" type="checkbox">
-                        <label class="form-check-label">Reset?</label>
+
+            <fieldset>
+                <legend>Fornecedores</legend>
+                <div class="col-md-9">
+                    <div id="fornecedoresLista" class="card shadow-sm p-4 mt-4">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Plantas</legend>
+                <div class="col-md-9">
+                    <div id="plantasLista" class="card shadow-sm p-4 mt-4">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Informações Complementares</legend>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-label">Plano</label>
+                        <input asp-for="Plano" class="form-control" placeholder="(vazio)" readonly />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Ponto Operacional</label>
+                        <input asp-for="PontoOperacional" class="form-control" readonly />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">IMEI</label>
+                        <input asp-for="Imei" class="form-control" placeholder="(vazio)" readonly />
                     </div>
                 </div>
 
-            <div class="row">
-                <div class="col-md-3">
-                    <label class="form-label">Rota</label>
-                    <input asp-for="Rota" class="form-control" readonly />
-                </div>
-            </div>
-
-                <div class="col-md-3">
-                    <label class="form-label">Status</label>
-                    <input asp-for="Status" class="form-control" readonly />
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label class="form-label">Tipo de Viagem</label>
-                <input asp-for="TipoViagem" class="form-control" readonly />
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-check mt-4">
-                        <input asp-for="Vazia" class="form-check-input" type="checkbox">
-                        <label class="form-check-label">Viagem Vazia?</label>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-label">Manifestar</label>
+                        <input asp-for="Manifestar" class="form-control" readonly />
                     </div>
                 </div>
-            </div>
+            </fieldset>
 
-
-            <div id="fornecedoresLista" class="card shadow-sm p-4 mt-4">
-                <h4>Fornecedores</h4>
-            </div>
+            <fieldset>
+                <legend>Execução</legend>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-check mt-4">
+                            <input asp-for="ExecutouOK" class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Executou com Sucesso? </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Erro</label>
+                        <input asp-for="Erro" class="form-control" placeholder="(vazio)" readonly />
+                    </div>
+                </div>
+            </fieldset>
         </form>
     </div>
 </div>
 <style>
-    #fornecedoresLista {
+    #fornecedoresLista, #placaLista, #plantasLista {
         max-height: 280px;
         overflow-y: auto;
+    }
+
+    fieldset {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 50px;
+        border-radius: 8px;
+    }
+
+    legend {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    .fornecedor-table, .placas-table, .plantas-table {
+        float: right;
+        margin-left: 20px;
+    }
+
+    .card {
+        margin-bottom: 20px;
     }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -166,7 +211,7 @@
     @if (Model is not null)
     {
         <text>
-                                                                    $("#syncDetails").show();
+                        $("#syncDetails").show();
         </text>
     }
 

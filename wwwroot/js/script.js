@@ -16,18 +16,9 @@
             success: function (data) {
                 if (data) {
                     // Existing code to populate form fields
-                    if (data.acao) {
-                        $('#Acao').val(data.acao);
-                    } else {
-                        $('#Acao').val("(vazio)");
-                    }
-
+                    $('#Acao').val(data.acao);
                     $('#DataViagem').val(data.dataViagem);
-                    if (data.erro) {
-                        $('#Erro').val(data.erro);
-                    } else {
-                        $('#Erro').val("(vazio)");
-                    }
+                    $('#Erro').val(data.erro);
                     $('#ExecutouOK').prop('checked', data.executouOK);
                     $('#Imei').val(data.imei);
                     $('#Manifestar').val(data.manifestar);
@@ -41,28 +32,59 @@
                     $('#PontoOperacional').val(data.pontoOperacional);
                     $('#Reset').prop('checked', data.reset);
                     $('#Rota').val(data.rota);
-                    $('#Status').val(data.status);
+                    $('#Status').val(data.Status);
                     $('#TipoViagem').val(data.tipoViagem);
                     $('#Vazia').prop('checked', data.vazia);
                     $('.card:last').show();
 
                     if (data.fornecedores && data.fornecedores.length > 0) {
-                        var fornecedoresHtml = "<h4>Fornecedores</h4>";
+                        var fornecedoresHtml = "";
                         data.fornecedores.forEach(function (fornecedor) {
-                            fornecedoresHtml += '<table>';
-                            fornecedoresHtml += '<tr><td><strong>CNPJ:</strong></td><td>' + fornecedor.cnpj + '</td></tr>';
-                            fornecedoresHtml += '<tr><td><strong>Razão Social:</strong></td><td>' + fornecedor.razaoSocial + '</td></tr>';
-                            fornecedoresHtml += '<tr><td><strong>Código Geral:</strong></td><td>' + fornecedor.codigoGeral + '</td></tr>';
-                            fornecedoresHtml += '<tr><td><strong>Cut off:</strong></td><td>' + fornecedor.cutoff + '</td></tr>';
-                            fornecedoresHtml += '<tr><td><strong>Descricao Parada:</strong></td><td>' + fornecedor.descricaoParada + '</td></tr>';
-                            fornecedoresHtml += '<tr><td><strong>Endereço:</strong></td><td>' + fornecedor.endereco + '</td></tr>';
-                            fornecedoresHtml += '<tr><td><strong>Ordem Parada:</strong></td><td>' + fornecedor.ordemParada + '</td></tr>';
+                            fornecedoresHtml += '<table class="fornecedor-table">';
+                            fornecedoresHtml += '<tr><td><strong>Ordem Parada:</strong></td><td>' + fornecedor.ordemParada.trim() + '</td></tr>';
+                            fornecedoresHtml += '<tr><td><strong>CNPJ:</strong></td><td>' + fornecedor.cnpj.trim() + '</td></tr>';
+                            fornecedoresHtml += '<tr><td><strong>Código Geral:</strong></td><td>' + fornecedor.codigoGeral.trim() + '</td></tr>';
+                            fornecedoresHtml += '<tr><td><strong>Razão Social:</strong></td><td>' + fornecedor.razaoSocial.trim() + '</td></tr>';
+                            fornecedoresHtml += '<tr><td><strong>Descricao Parada:</strong></td><td>' + fornecedor.descricaoParada.trim() + '</td></tr>';
+                            fornecedoresHtml += '<tr><td><strong>Endereço:</strong></td><td>' + fornecedor.endereco.trim() + '</td></tr>';
+                            fornecedoresHtml += '<tr><td><strong>Cut off:</strong></td><td>' + fornecedor.cutoff.trim() + '</td></tr>';
                             fornecedoresHtml += '</table>';
                             fornecedoresHtml += '<hr/>';
                         });
                         $('#fornecedoresLista').html(fornecedoresHtml);
                     } else {
                         $('#fornecedoresLista').html('<p>Nenhum fornecedor encontrado.</p>');
+                    }
+
+                    if (data.placas && data.placas.length > 0) {
+                        var placasHtml = "";
+                        data.placas.forEach(function (placa) {
+                            placasHtml += '<table class="placas-table">';
+                            placasHtml += '<tr><td><strong>Tipo:</strong></td><td>' + placa.tipo.trim() + '</td></tr>';
+                            placasHtml += '<tr><td><strong>Placa:</strong></td><td>' + placa.placa.trim() + '</td></tr>';
+                            placasHtml += '</table>';
+                            placasHtml += '<hr/>';
+                        });
+                        $('#placasLista').html(placasHtml);
+                    } else {
+                        $('#placasLista').html('<p>Nenhuma placa encontrada.</p>');
+                    }
+
+
+                    if (data.plantas && data.plantas.length > 0) {
+                        var plantasHtml = "";
+                        data.plantas.forEach(function (planta) {
+                            plantasHtml += '<table class="plantas-table">';
+                            plantasHtml += '<tr><td><strong>Código:</strong></td><td>' + planta.codigo.trim() + '</td></tr>';
+                            plantasHtml += '<tr><td><strong>CNPJ:</strong></td><td>' + planta.cnpj.trim() + '</td></tr>';
+                            plantasHtml += '<tr><td><strong>Descrição:</strong></td><td>' + planta.descricao.trim() + '</td></tr>';
+                            plantasHtml += '<tr><td><strong>Resp:</strong></td><td>' + planta.resp.trim() + '</td></tr>';
+                            plantasHtml += '</table>';
+                            plantasHtml += '<hr/>';
+                        });
+                        $('#plantasLista').html(plantasHtml);
+                    } else {
+                        $('#plantasLista').html('<p>Nenhuma planta encontrada.</p>');
                     }
                 } else {
                     alert("Nenhum dado encontrado para este número de telefone.");
@@ -95,5 +117,8 @@
         $('#TipoViagem').val('');
         $('#Vazia').prop('checked', false);
         $('#fornecedoresLista').html('');
+        $('#placasLista').html('');
+        $('#plantasLista').html('');
     }
 });
+
