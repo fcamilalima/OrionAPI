@@ -6,7 +6,7 @@ namespace OrionAPI.Models
     {
         public string? Acao { get; set; }
         public string DataViagem { get; set; }
-        public string Erro { get; set; }
+        public string? Erro { get; set; }
         public bool ExecutouOK { get; set; }
         public List<Fornecedor> Fornecedores { get; set; }
         public string Imei { get; set; }
@@ -22,10 +22,10 @@ namespace OrionAPI.Models
         public string PontoOperacional { get; set; }
         public bool Reset { get; set; }
         public string Rota { get; set; }
-        public string Status { get; set; }
+        public string? Status { get; set; }
         public string TipoViagem { get; set; }
         public bool Vazia { get; set; }
-        public Planta Plantas { get; set; }
+        public List<Planta> plantas { get; set; }
     }
 
     public class Planta
